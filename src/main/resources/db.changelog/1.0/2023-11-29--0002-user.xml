@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2023-11-29--0002-user" author="AkkaRin">
+<!--            <validCheckSum>any</validCheckSum>-->
+        <preConditions>
+            <not>
+                <tableExists tableName="my_user"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="my_user">
+            <column name="id"
+                    type="bigint">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+            <column name="name"
+                    type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="current_action"
+                    type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

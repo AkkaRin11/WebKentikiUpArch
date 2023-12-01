@@ -1,0 +1,21 @@
+spring:
+  datasource:
+#    url: jdbc:h2:mem:testdb
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://dpg-cll261kjtl8s73f5vcag-a.frankfurt-postgres.render.com:5432/dbname_sb24
+    username: dbname_sb24_user
+    password: "ylVZALhUIQapEy7geGM4I1VaBZv8n7k9"
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/db.changelog-master.xml
+
+  jpa:
+    generate-ddl: false
+
+    hibernate:
+      ddl-auto: none
+
+  thymeleaf:
+    prefix: "file:src/main/resources/templates/"
+    cache: false
