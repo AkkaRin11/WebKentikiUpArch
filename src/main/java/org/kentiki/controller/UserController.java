@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class UserController {
     private final UserService userService;
 
-
     @PostMapping("/user")
     public void insertUser(@RequestBody UserDto userDto){
         userService.insert(UserDto.toDomainObject(userDto));

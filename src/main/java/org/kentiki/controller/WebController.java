@@ -1,10 +1,10 @@
 package org.kentiki.controller;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.kentiki.dto.AnswerDto;
-import org.kentiki.model.Answer;
+import org.kentiki.servise.FileService;
 import org.kentiki.servise.ImgService;
-import org.springframework.http.ResponseEntity;
+import org.kentiki.util.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class WebController {
     private final ImgService imgService;
+    private final FileService fileService;
 
     @GetMapping("/website")
     public String mainPage(){
@@ -41,7 +42,7 @@ public class WebController {
     @GetMapping("/website/quiz/{imgName}")
     public String quizImgPage(Model model, @PathVariable String imgName) {
         model.addAttribute("action",  imgName);
-        model.addAttribute("imgName", imgService.getImgPathFromName(imgName));
+        model.addAttribute("imgName", FileUtils.getFilePath(imgName));
         model.addAttribute("answer", new AnswerDto());
         return "quizPage";
     }

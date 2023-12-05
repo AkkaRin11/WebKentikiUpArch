@@ -17,9 +17,9 @@ public interface ImgService {
 
     void deleteByName(String name);
 
-    Img getRandomeImg();
 
-    String getImgPathFromName(String name);
+    // всё что далее вынести в отдельный серсис
+    Img getRandomeImg();
 
     boolean checkAnswer(Answer answer, Img img);
 

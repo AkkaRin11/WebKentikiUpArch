@@ -1,11 +1,10 @@
 package org.kentiki.controller;
 
+import io.minio.*;
 import lombok.RequiredArgsConstructor;
-import org.kentiki.domain.User;
 import org.kentiki.dto.ImgDto;
-import org.kentiki.dto.UserDto;
+import org.kentiki.servise.FileService;
 import org.kentiki.servise.ImgService;
-import org.kentiki.servise.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

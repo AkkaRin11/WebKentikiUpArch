@@ -54,10 +54,6 @@ public class ImgServiceImpl implements ImgService{
         return imgList.get(rnd);
     }
 
-    @Override
-    public String getImgPathFromName(String name) {
-        return "/data_img/" + name + ".jpg";
-    }
 
     @Override
     public boolean checkAnswer(Answer answer, Img img) {
