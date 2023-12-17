@@ -2,5 +2,5 @@
   "credentials_name": "minioadmin",
   "credentials_pass": "minioadmin",
   "bucket_name": "user1",
-  "img_path": "src/main/resources/static/test/"
+  "img_path": "http://localhost:9000/"
 }

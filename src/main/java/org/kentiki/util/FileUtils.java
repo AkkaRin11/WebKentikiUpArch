@@ -48,11 +48,11 @@ public class FileUtils {
         return null;
     }
 
-    public static String getImgPath(){
+    public static String getImgPath(String name){
         try {
             Map<String, String> configs = mapper.readValue(
                     new File("src/main/java/org/kentiki/project_configs/s3_config.json"), Map.class);
-            return configs.get("img_path");
+            return configs.get("img_path") + configs.get("bucket_name") + "/" + name + ".jpg";
 
         } catch (IOException e) {
             System.out.println(e);
@@ -61,7 +61,4 @@ public class FileUtils {
         return null;
     }
 
-    public static String getFilePath(String name) {
-        return "/data_img/" + name + ".jpg";
-    }
 }

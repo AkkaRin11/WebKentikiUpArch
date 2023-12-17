@@ -16,43 +16,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class WebController {
     private final ImgService imgService;
-    private final FileService fileService;
 
-    @GetMapping("/website")
+    @GetMapping("/web")
     public String mainPage(){
         return "mainPage";
     }
 
-    @GetMapping("/website/right")
+    @GetMapping("/web/right")
     public String rightAnswerPage() {
         return "rightAnswerPage";
     }
 
-    @GetMapping("/website/wrong/{imgName}")
+    @GetMapping("/web/wrong/{imgName}")
     public String wrongAnswerPage(Model model, @PathVariable String imgName) {
         model.addAttribute("date", imgService.getByName(imgName).getDate());
         return "wrongAnswerPage";
     }
 
-    @GetMapping("/website/quiz")
+    @GetMapping("/web/quiz")
     public String quizPage() {
-        return "redirect:/website/quiz/" + imgService.getRandomeImg().getName();
+        return "redirect:/web/quiz/" + imgService.getRandomeImg().getName();
     }
 
-    @GetMapping("/website/quiz/{imgName}")
+    @GetMapping("/web/quiz/{imgName}")
     public String quizImgPage(Model model, @PathVariable String imgName) {
         model.addAttribute("action",  imgName);
-        model.addAttribute("imgName", FileUtils.getFilePath(imgName));
+        model.addAttribute("imgName", FileUtils.getImgPath(imgName));
         model.addAttribute("answer", new AnswerDto());
         return "quizPage";
     }
 
-    @PostMapping("/website/quiz/{imgName}")
+    @PostMapping("/web/quiz/{imgName}")
     public String checkAnswer(@ModelAttribute AnswerDto answerDto, @PathVariable String imgName) {
         if (imgService.checkAnswer(AnswerDto.toModelObject(answerDto), imgService.getByName(imgName))){
-            return "redirect:/website/right";
+            return "redirect:/web/right";
         } else {
-            return "redirect:/website/wrong/" + imgName;
+            return "redirect:/web/wrong/" + imgName;
         }
     }
 }
